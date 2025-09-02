@@ -1,7 +1,4 @@
 """
-Mpox Wastewater Surveillance – EDA Script
-Author: Your Name
-Date: 2025-09-02
 
 This script performs exploratory data analysis on the CDC Wastewater Data for Mpox.
 It reproduces the results and visualizations described in the README.md.
