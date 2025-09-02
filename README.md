@@ -5,30 +5,30 @@ The dataset spans from **July 2022 through August 2025** and includes wastewater
 
 ---
 
-## 📊 Dataset Overview
+## Dataset Overview
 - **Rows / Columns:** 184,943 × 39  
 - **Time Coverage:** 2022-07-06 → 2025-08-26  
 - **Sewersheds Represented:** 747  
 - **States Represented:** 51  
 - **PCR Targets:** `hmpxv`, `hmpxv clade i`, `hmpxv clade ii`, `nvo`  
 
-Each row corresponds to a wastewater sample, with fields describing location, assay target, method, limits of detection, and concentrations.
+Each row corresponds to a wastewater sample, with fields that describe the location, assay target, method, limits of detection, and concentrations.
 
 ---
 
-## 🧹 Data Processing
+## Data Processing
 Steps performed:
 1. **Parsing Dates** – Converted `sample_collect_date` and `date_updated` to datetime.  
 2. **Type Conversion** – Coerced numeric fields (concentrations, flow rates, recovery metrics).  
 3. **Feature Engineering**  
-   - `week` (Sunday-start) from collection date  
+   - `week` (Sunday-start) from the collection date  
    - `state` from FIPS codes  
    - `detected` flag: 1 if measured concentration ≥ limit of detection, else 0  
 4. **Cleaning** – Handled missing values, removed records without meaningful detection info.  
 
 ---
 
-## 📈 Analyses Performed
+## Analyses Performed
 - **National trends (weekly median concentration)** per PCR target  
 - **Weekly detection rates** (share of samples above LOD) per PCR target  
 - **State-level detection rates** for Clade II (restricted to states with ≥200 samples)  
@@ -36,7 +36,7 @@ Steps performed:
 
 ---
 
-## 🖼️ Key Figures
+## Key Figures
 Figures are stored in [`outputs/mpox_eda_outputs/`](outputs/mpox_eda_outputs/). Highlights include:
 
 - **Weekly Median Concentration** – Each target’s temporal dynamics  
@@ -45,7 +45,7 @@ Figures are stored in [`outputs/mpox_eda_outputs/`](outputs/mpox_eda_outputs/). 
 
 ---
 
-## 🔑 Findings
+## Findings
 - Wastewater signal for Mpox emerges in **mid-2022**, with a **sharp surge in late 2022**.  
 - **Clade II** dominated detections during the 2022 outbreak, with **low but persistent signals** afterward.  
 - **Clade I** detections are **sporadic and rare** through 2025.  
@@ -54,7 +54,7 @@ Figures are stored in [`outputs/mpox_eda_outputs/`](outputs/mpox_eda_outputs/). 
 
 ---
 
-## ⚠️ Caveats
+## Caveats
 - **LOD variability** – Detection thresholds differ across labs and matrices.  
 - **Coverage bias** – Not all states or sewersheds participate equally.  
 - **Aggregation choice** – National medians are robust but may not reflect population-weighted burden.  
